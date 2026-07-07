@@ -1,16 +1,21 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 import "./HomePage.css";
 import { Header } from "../components/Header";
-import { products } from "../../starting-code/data/products";
 
-function Homepage() {
-  fetch("http//:localhost:3000/apo/producrs").then((response) => {
-    console.log(response.data);
-  });
+function Homepage({ cart }) {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios.get("/api/products").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
+
   return (
     <>
       <title>Home</title>
-      <Header></Header>
+      <Header cart={cart}></Header>
+
       <div className="home-page">
         <div className="products-grid">
           {products.map((product) => (
@@ -42,7 +47,28 @@ function Homepage() {
                 ${(product.priceCents / 100).toFixed(2)}
               </div>
 
-              {/* Rest of your JSX */}
+              <div className="product-quantity-container">
+                <select>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div className="added-to-cart">
+                <img src="images/icons/checkmark.png" />
+                Added
+              </div>
+
+              <button className="add-to-cart-button button-primary">
+                Add to Cart
+              </button>
             </div>
           ))}
 

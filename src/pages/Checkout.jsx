@@ -1,7 +1,7 @@
 import "./checkout.css";
 import "./checkout-header.css";
 
-function Checkout() {
+function Checkout({ cart }) {
   return (
     <>
       <title>checkout</title>
