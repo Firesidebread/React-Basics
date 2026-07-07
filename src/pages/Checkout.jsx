@@ -1,10 +1,14 @@
+import "./checkout.css";
+import "./checkout-header.css";
+
 function Checkout() {
   return (
     <>
+      <title>checkout</title>
       <div class="checkout-header">
         <div class="header-content">
           <div class="checkout-header-left-section">
-            <a href="index.html">
+            <a href="/">
               <img class="logo" src="images/logo.png" />
               <img class="mobile-logo" src="images/mobile-logo.png" />
             </a>
@@ -12,7 +16,7 @@ function Checkout() {
 
           <div class="checkout-header-middle-section">
             Checkout (
-            <a class="return-to-home-link" href="index.html">
+            <a class="return-to-home-link" href="/">
               3 items
             </a>
             )
