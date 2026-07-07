@@ -1,14 +1,51 @@
+import axios from "axios";
 import "./HomePage.css";
 import { Header } from "../components/Header";
+import { products } from "../../starting-code/data/products";
 
 function Homepage() {
+  fetch("http//:localhost:3000/apo/producrs").then((response) => {
+    console.log(response.data);
+  });
   return (
     <>
       <title>Home</title>
       <Header></Header>
-
       <div className="home-page">
         <div className="products-grid">
+          {products.map((product) => (
+            <div key={product.id} className="product-container">
+              <div className="product-image-container">
+                <img
+                  className="product-image"
+                  src={product.image}
+                  alt={product.name}
+                />
+              </div>
+
+              <div className="product-name limit-text-to-2-lines">
+                {product.name}
+              </div>
+
+              <div className="product-rating-container">
+                <img
+                  className="product-rating-stars"
+                  src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+                  alt=""
+                />
+                <div className="product-rating-count link-primary">
+                  {product.rating.count}
+                </div>
+              </div>
+
+              <div className="product-price">
+                ${(product.priceCents / 100).toFixed(2)}
+              </div>
+
+              {/* Rest of your JSX */}
+            </div>
+          ))}
+
           <div className="product-container">
             <div className="product-image-container">
               <img
