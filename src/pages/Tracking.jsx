@@ -1,11 +1,11 @@
 import "./tracking.css";
 import { Header } from "../components/Header";
 
-export function Track() {
+export function Track({ cart }) {
   return (
     <>
       <title>track</title>
-      <Header></Header>
+      <Header cart={cart}></Header>
 
       <div class="tracking-page">
         <div class="order-tracking">
