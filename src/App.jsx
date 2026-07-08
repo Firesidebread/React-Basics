@@ -10,7 +10,7 @@ import axios from "axios";
 function App() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    axios.get("/api/cart-items").then((rand) => {
+    axios.get("/api/cart-items?expand=product").then((rand) => {
       setCart(rand.data);
     });
   }, []);
