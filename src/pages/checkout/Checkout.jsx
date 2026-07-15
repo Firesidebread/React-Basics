@@ -8,6 +8,7 @@ import { PaymentSummary } from "./PaymentSummary";
 function Checkout({ cart, loadCart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
+  let totalQuan = 0;
   useEffect(() => {
     const getApiCheckoutData = async () => {
       let response = await axios.get(
@@ -34,7 +35,10 @@ function Checkout({ cart, loadCart }) {
           <div className="checkout-header-middle-section">
             Checkout (
             <a className="return-to-home-link" href="/">
-              3 items
+              {cart.map((carty) => {
+                totalQuan += carty.quantity;
+              })}
+              {totalQuan} items
             </a>
             )
           </div>
