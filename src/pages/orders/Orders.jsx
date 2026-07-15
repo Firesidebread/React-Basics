@@ -8,9 +8,11 @@ import dayjs from "dayjs";
 function Orders({ cart }) {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    axios.get("/api/orders?expand=products").then((response) => {
+    const getApiOrders = async () => {
+      const response = await axios.get("/api/orders?expand=products");
       setOrders(response.data);
-    });
+    };
+    getApiOrders();
   }, []);
   return (
     <>

@@ -7,9 +7,11 @@ import { ProductsGrid } from "./ProductsGrid";
 function Homepage({ cart }) {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.get("/api/products").then((response) => {
+    const getApiProducts = async () => {
+      const response = await axios.get("/api/products");
       setProducts(response.data);
-    });
+    };
+    getApiProducts();
   }, []);
 
   return (

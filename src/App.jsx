@@ -10,9 +10,11 @@ import axios from "axios";
 function App() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    axios.get("/api/cart-items?expand=product").then((rand) => {
+    const getApiCartItems = async () => {
+      const response = await axios.get("/api/cart-items?expand=product");
       setCart(rand.data);
-    });
+    };
+    getApiCartItems();
   }, []);
   return (
     <Routes>
